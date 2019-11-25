@@ -1,0 +1,30 @@
+package com.hcl.thrdemo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Thr1 implements Runnable {
+	@Override
+	public void run() {
+		List<String> names=new ArrayList<String>();
+		names.add("Sowmya");
+		names.add("Ram");
+		names.add("Poornesh");
+		names.add("Bharath");
+		names.add("Hemanth");
+		for (String s : names) {
+			System.out.println(s);
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+}
+
+public class ThrEx {
+
+}

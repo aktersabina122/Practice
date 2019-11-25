@@ -1,0 +1,30 @@
+package com.hcl.project;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class StudentBALTest {
+
+	@Test
+	public void testAddStudent() throws StudentException {
+		Student student=new Student();
+		student.setSno(1);
+		student.setName("Navya");
+		student.setCity("Chennai");
+		student.setCgp(9.9);
+		StudentBAL bal=new StudentBAL();
+		assertEquals("Student Created Successfully...",
+				bal.addStudentBal(student));
+	}
+	@Test
+	public void testEx1()  {
+		Student student=new Student();
+		student.setSno(1);
+		student.setName("Navya");
+		student.setCity("Chennai");
+		student.setCgp(9.9);
+		StudentBAL bal=new StudentBAL();
+		assertEquals("Student Created Successfully...",
+			
+}

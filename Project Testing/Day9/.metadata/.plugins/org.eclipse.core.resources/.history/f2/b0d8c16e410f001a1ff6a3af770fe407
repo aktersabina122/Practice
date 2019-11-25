@@ -1,0 +1,11 @@
+package com.hcl.thrdemo;
+
+class Demo {
+	void dispMsg(String name) {
+		System.out.print("Hi " +name);
+		Thread.sleep(1000);
+	}
+}
+public class SyncDemo {
+
+}

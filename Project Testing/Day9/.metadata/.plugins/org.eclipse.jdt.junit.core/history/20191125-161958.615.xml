@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="StudentProject" project="StudentProject" tests="6" started="6" failures="0" errors="0" ignored="0">
+  <testsuite name="com.hcl.project.StudentBALTest" time="0.001">
+    <testcase name="testEx1" classname="com.hcl.project.StudentBALTest" time="0.001"/>
+    <testcase name="testEx2" classname="com.hcl.project.StudentBALTest" time="0.0"/>
+    <testcase name="testEx3" classname="com.hcl.project.StudentBALTest" time="0.0"/>
+    <testcase name="testEx4" classname="com.hcl.project.StudentBALTest" time="0.0"/>
+    <testcase name="testAddStudent" classname="com.hcl.project.StudentBALTest" time="0.0"/>
+  </testsuite>
+  <testsuite name="com.hcl.project.StudentTest" time="0.0">
+    <testcase name="testGettersAndSetters" classname="com.hcl.project.StudentTest" time="0.0"/>
+  </testsuite>
+</testrun>

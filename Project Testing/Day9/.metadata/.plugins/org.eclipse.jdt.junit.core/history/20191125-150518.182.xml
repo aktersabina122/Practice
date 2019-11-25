@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestData" project="TestingDemo" tests="10" started="10" failures="0" errors="0" ignored="0">
+  <testsuite name="com.hcl.junit.TestData" time="0.002">
+    <testcase name="testDiv" classname="com.hcl.junit.TestData" time="0.0"/>
+    <testcase name="testSum" classname="com.hcl.junit.TestData" time="0.0"/>
+    <testcase name="testSayHello" classname="com.hcl.junit.TestData" time="0.0"/>
+    <testcase name="testDivEx" classname="com.hcl.junit.TestData" time="0.001"/>
+    <testcase name="testEven" classname="com.hcl.junit.TestData" time="0.0"/>
+    <testcase name="testMax3" classname="com.hcl.junit.TestData" time="0.0"/>
+    <testcase name="testNull" classname="com.hcl.junit.TestData" time="0.0"/>
+    <testcase name="testMinArray" classname="com.hcl.junit.TestData" time="0.0"/>
+    <testcase name="testGetProperty" classname="com.hcl.junit.TestData" time="0.0"/>
+    <testcase name="testNotNull" classname="com.hcl.junit.TestData" time="0.001"/>
+  </testsuite>
+</testrun>
