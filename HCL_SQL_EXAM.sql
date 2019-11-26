@@ -20,3 +20,10 @@
 
 11) Display takehome of employee as if comm is null then sal else sal+comm
 
+12) Display Empno,Ename,job and display workarea as
+	 if 'SALESMAN' then 'Pune'
+     if 'PRESIDENT' then 'Mumbai'
+     If 'Manager' then 'Bangalore'
+     else 'Chennai'
+13) 
+	 
