@@ -24,3 +24,8 @@ str1.split(str2) // returns [ 'Apple', ' Banana', ' Orange' ]
 str1.split(',') // returns [ 'Apple', ' Banana', ' Orange' ]
 str1.split(',', 2) // returns [ 'Apple', ' Banana' ]
 str1.split(',', 1) // returns [ 'Apple']
+
+let str: string = 'Hello Typescript';
+str.toUpperCase(); // returns 'HELLO TYPESCRIPT'
+'hello typescript'.toUpperCase(); // returns 'HELLO TYPESCRIPT'
+
