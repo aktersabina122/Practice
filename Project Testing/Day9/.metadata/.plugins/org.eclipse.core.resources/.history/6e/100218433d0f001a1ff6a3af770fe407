@@ -1,0 +1,9 @@
+package com.hcl.thrdemo;
+
+class Thr1 implements Runnable {
+	
+}
+
+public class ThrEx {
+
+}

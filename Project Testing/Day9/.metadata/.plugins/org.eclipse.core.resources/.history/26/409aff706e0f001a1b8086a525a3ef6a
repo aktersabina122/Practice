@@ -1,0 +1,14 @@
+package com.hcl.project;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class StudentBALTest {
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}

@@ -1,0 +1,29 @@
+package com.hcl.project;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class StudentBALTest {
+
+	@Test
+	public void test() throws StudentException,NullPointerException {
+		Student student=new Student();
+		student.setSno(1);
+		student.setName("Navya");
+		student.setCity("Chennai");
+		student.setCgp(9.9);
+		StudentBAL bal=new StudentBAL();
+		assertEquals("Student Created Successfully...",
+				bal.addStudentBal(student));
+		Student student1=new Student();
+		student.setSno(1);
+		student.setName("ad");
+		student.setCity("Chennai");
+		student.setCgp(9.9);
+		
+		assertEquals("Student Created Successfully...",
+				bal.addStudentBal(student1));
+	}
+
+}
