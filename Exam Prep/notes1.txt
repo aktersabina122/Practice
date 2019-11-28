@@ -1,0 +1,353 @@
+Garbage Collection : 
+
+   Data obj1=new Data();
+   Data obj2=new Data();
+
+   Data obj3=new Data();
+
+     obj3=obj2;
+
+Using System.gc() method : System class contain static method gc() for requesting JVM to run Garbage Collector.
+Using Runtime.getRuntime().gc() method : Runtime class allows the application to interface with the JVM in which the application is running. Hence by using its gc() method, we can request JVM to run Garbage Collector.
+
+Test t1 = new Test(); 
+        Test t2 = new Test(); 
+          
+        // Nullifying the reference variable 
+        t1 = null; 
+          
+        // requesting JVM for running Garbage Collector 
+        System.gc(); 
+          
+        // Nullifying the reference variable 
+        t2 = null; 
+          
+        // requesting JVM for running Garbage Collector 
+        Runtime.getRuntime().gc(); 
+
+
+javac filename.java
+
+java filename
+
+
+if you dont give static for main() what will happen
+
+
+What is the command to print output as Hello Welcome 
+
+
+java filename Hello World Welcome 
+
+java filename Hello Welcome 
+
+java filename Hello Welcome World
+
+
+Marker interface :
+
+If you dont define any methods in an interface, this is called marker interafce. 
+
+There are 3 predefined marker interfaces as
+
+  1) Clonable
+
+  2) Serilizable
+
+  3) Remote
+
+
+Identify unchecked exceptions in the list 
+
+NumberFormatException
+ArrayIndexOutOfBoundsException
+ArithmeticException 
+
+
+
+Covariant returns :  if any method returns this keyword, (class object) known as covariant return. 
+___________________
+
+class A {
+  A get(){
+  }
+}
+
+class B extends A {
+  B get() {
+    return this;
+  }
+  void show() {
+    sysout("Hi");
+  }
+
+  psvm(String[] args) {
+      
+  }
+}
+
+new B().get().show();
+
+
+
+
+   getClass().getSimpleName();
+
+
+ ArrayList<String> list = new ArrayList<String>(); 
+  
+        list.add("A"); 
+        list.add("B"); 
+        list.add("C"); 
+        list.add("D"); 
+        list.add("E"); 
+  
+        // Iterator to traverse the list 
+        Iterator iterator = list.iterator(); 
+  
+        System.out.println("List elements : "); 
+  
+        while (iterator.hasNext()) 
+            System.out.print(iterator.next() + " "); 
+  
+        System.out.println(); 
+    } 
+
+
+4. Legacy :  Enumeration is a legacy interface which is used for traversing Vector, Hashtable. 
+Iterator is not a legacy interface. Iterator can be used for the traversal of HashMap, LinkedList,  ArrayList, HashSet, TreeMap, 
+TreeSet . 
+
+Enumeration enum;
+        Iterator iter;
+        long start;
+        
+        for(int i=0; i<1000000; i++){
+            v.add("New Element");
+        }
+        
+        enum=v.elements();
+        iter=v.iterator();
+        //*****CODE BLOCK FOR ITERATOR**********************
+        start=System.currentTimeMillis();
+        while(iter.hasNext()){
+            element=iter.next();
+        }
+        System.out.println("Iterator took " + (System.currentTimeMillis()-start));
+        //*************END OF ITERATOR BLOCK************************
+        
+        System.gc();   //request to GC to free up some memory
+        //*************CODE BLOCK FOR ENUMERATION*******************
+        start=System.currentTimeMillis();
+        while(enum.hasMoreElements()){
+            element=enum.nextElement();
+        }
+        System.out.println("Enumeration took " + (System.currentTimeMillis()-start));
+        //************END OF ENUMERATION BLOCK**********************
+    }
+
+
+
+
+QUEUE interface 
+
+ Queue<Integer> q = new LinkedList<>(); 
+  
+    // Adds elements {0, 1, 2, 3, 4} to queue 
+    for (int i=0; i<5; i++) 
+     q.add(i); 
+  
+    // Display contents of the queue. 
+    System.out.println("Elements of queue-"+q); 
+  
+    // To remove the head of queue. 
+    int removedele = q.remove(); 
+    System.out.println("removed element-" + removedele); 
+  
+    System.out.println(q); 
+  
+    // To view the head of queue 
+    int head = q.peek(); 
+    System.out.println("head of queue-" + head); 
+  
+    // Rest all methods of collection interface, 
+    // Like size and contains can be used with this 
+    // implementation. 
+    int size = q.size(); 
+    System.out.println("Size of queue-" + size);
+
+
+
+
+STACK Example
+______________
+class Test 
+{    
+    // Pushing element on the top of the stack 
+    static void stack_push(Stack<Integer> stack) 
+    { 
+        for(int i = 0; i < 5; i++) 
+        { 
+            stack.push(i); 
+        } 
+    } 
+      
+    // Popping element from the top of the stack 
+    static void stack_pop(Stack<Integer> stack) 
+    { 
+        System.out.println("Pop :"); 
+  
+        for(int i = 0; i < 5; i++) 
+        { 
+            Integer y = (Integer) stack.pop(); 
+            System.out.println(y); 
+        } 
+    } 
+  
+    // Displaying element on the top of the stack 
+    static void stack_peek(Stack<Integer> stack) 
+    { 
+        Integer element = (Integer) stack.peek(); 
+        System.out.println("Element on stack top : " + element); 
+    } 
+      
+    // Searching element in the stack 
+    static void stack_search(Stack<Integer> stack, int element) 
+    { 
+        Integer pos = (Integer) stack.search(element); 
+  
+        if(pos == -1) 
+            System.out.println("Element not found"); 
+        else
+            System.out.println("Element is found at position " + pos); 
+    } 
+  
+  
+    public static void main (String[] args) 
+    { 
+        Stack<Integer> stack = new Stack<Integer>(); 
+  
+        stack_push(stack); 
+        stack_pop(stack); 
+        stack_push(stack); 
+        stack_peek(stack); 
+        stack_search(stack, 2); 
+        stack_search(stack, 6); 
+    } 
+} 
+
+Assume we have db.properties, how u will get 
+
+ResourceBundle rb=new ResourceBundle("db.properties");
+
+{wrong}
+
+ResourceBundle rb=ResourceBundle.getBundle("db");
+
+
+
+Locale geek1 = new Locale("English", "IN"); 
+  
+        // Use of getDefault() : 
+        Locale geek2 = Locale.getDefault(); 
+  
+        System.out.println("Locale name : " + geek1); 
+        System.out.println("Locale name Default : " + geek2); 
+  
+        // Use of getDisplayCountry() : 
+        System.out.println("\nCountry Name : "
+                            + geek1.getDisplayCountry()); 
+  
+        // Use of getCountry() : 
+        System.out.println("Country Name ISO 3166 2-letter code : "
+                                            + geek1.getCountry()); 
+  
+        // Use of equal() : 
+        System.out.println("\nIs geek1 equals geek2 : "
+                                 + geek1.equals(geek2)); 
+  
+        // clone() : geek3 is a clone of geek2 
+        Locale geek3 = (Locale) geek2.clone(); 
+  
+        // Locale : geek3 
+        System.out.println("Locale geek3 same as geek2 : "
+                                                + geek3); 
+
+
+
+ Locale locale = new Locale("fr");   
+        System.out.println("locale: "+locale);
+         
+        // Create a locale object using two parameters constructor
+        Locale locale2 = new Locale("fr", "CANADA");
+        System.out.println("locale2: "+locale2);
+         
+        // Create a locale object using three parameters constructor
+        Locale locale3 = new Locale("no", "NORWAY", "NY");
+        System.out.println("locale3: "+locale3);
+
+
+ Calendar calndr = Calendar.getInstance(); 
+  
+        // Display the date and time 
+        System.out.print("The system"
+                         + " date and time is: " + calndr.getTime()); 
+
+
+
+class NameComparator implements Comparator {
+    
+    public int compareTo(Employ e1,Employ e2) {
+      return e1.name.compareTo(e2.name)
+   }
+}
+
+The above code, we write in jdk 1.8 as 
+
+Comparator<Employee> employeeNameComparator
+      = Comparator.comparing(
+        Employee::name, (e1, e2) -> {
+            return s2.compareTo(s1);
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
