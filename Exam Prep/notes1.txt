@@ -1,0 +1,526 @@
+Garbage Collection : 
+
+   Data obj1=new Data();
+   Data obj2=new Data();
+
+   Data obj3=new Data();
+
+     obj3=obj2;
+
+Using System.gc() method : System class contain static method gc() for requesting JVM to run Garbage Collector.
+Using Runtime.getRuntime().gc() method : Runtime class allows the application to interface with the JVM in which the application is running. Hence by using its gc() method, we can request JVM to run Garbage Collector.
+
+Test t1 = new Test(); 
+        Test t2 = new Test(); 
+          
+        // Nullifying the reference variable 
+        t1 = null; 
+          
+        // requesting JVM for running Garbage Collector 
+        System.gc(); 
+          
+        // Nullifying the reference variable 
+        t2 = null; 
+          
+        // requesting JVM for running Garbage Collector 
+        Runtime.getRuntime().gc(); 
+
+
+javac filename.java
+
+java filename
+
+
+if you dont give static for main() what will happen
+
+
+What is the command to print output as Hello Welcome 
+
+
+java filename Hello World Welcome 
+
+java filename Hello Welcome 
+
+java filename Hello Welcome World
+
+
+Marker interface :
+
+If you dont define any methods in an interface, this is called marker interafce. 
+
+There are 3 predefined marker interfaces as
+
+  1) Clonable
+
+  2) Serilizable
+
+  3) Remote
+
+
+Identify unchecked exceptions in the list 
+
+NumberFormatException
+ArrayIndexOutOfBoundsException
+ArithmeticException 
+
+
+
+Covariant returns :  if any method returns this keyword, (class object) known as covariant return. 
+___________________
+
+class A {
+  A get(){
+  }
+}
+
+class B extends A {
+  B get() {
+    return this;
+  }
+  void show() {
+    sysout("Hi");
+  }
+
+  psvm(String[] args) {
+      
+  }
+}
+
+new B().get().show();
+
+
+
+
+   getClass().getSimpleName();
+
+
+ ArrayList<String> list = new ArrayList<String>(); 
+  
+        list.add("A"); 
+        list.add("B"); 
+        list.add("C"); 
+        list.add("D"); 
+        list.add("E"); 
+  
+        // Iterator to traverse the list 
+        Iterator iterator = list.iterator(); 
+  
+        System.out.println("List elements : "); 
+  
+        while (iterator.hasNext()) 
+            System.out.print(iterator.next() + " "); 
+  
+        System.out.println(); 
+    } 
+
+
+4. Legacy :  Enumeration is a legacy interface which is used for traversing Vector, Hashtable. 
+Iterator is not a legacy interface. Iterator can be used for the traversal of HashMap, LinkedList,  ArrayList, HashSet, TreeMap, 
+TreeSet . 
+
+Enumeration enum;
+        Iterator iter;
+        long start;
+        
+        for(int i=0; i<1000000; i++){
+            v.add("New Element");
+        }
+        
+        enum=v.elements();
+        iter=v.iterator();
+        //*****CODE BLOCK FOR ITERATOR**********************
+        start=System.currentTimeMillis();
+        while(iter.hasNext()){
+            element=iter.next();
+        }
+        System.out.println("Iterator took " + (System.currentTimeMillis()-start));
+        //*************END OF ITERATOR BLOCK************************
+        
+        System.gc();   //request to GC to free up some memory
+        //*************CODE BLOCK FOR ENUMERATION*******************
+        start=System.currentTimeMillis();
+        while(enum.hasMoreElements()){
+            element=enum.nextElement();
+        }
+        System.out.println("Enumeration took " + (System.currentTimeMillis()-start));
+        //************END OF ENUMERATION BLOCK**********************
+    }
+
+
+
+
+QUEUE interface 
+
+ Queue<Integer> q = new LinkedList<>(); 
+  
+    // Adds elements {0, 1, 2, 3, 4} to queue 
+    for (int i=0; i<5; i++) 
+     q.add(i); 
+  
+    // Display contents of the queue. 
+    System.out.println("Elements of queue-"+q); 
+  
+    // To remove the head of queue. 
+    int removedele = q.remove(); 
+    System.out.println("removed element-" + removedele); 
+  
+    System.out.println(q); 
+  
+    // To view the head of queue 
+    int head = q.peek(); 
+    System.out.println("head of queue-" + head); 
+  
+    // Rest all methods of collection interface, 
+    // Like size and contains can be used with this 
+    // implementation. 
+    int size = q.size(); 
+    System.out.println("Size of queue-" + size);
+
+
+
+
+STACK Example
+______________
+class Test 
+{    
+    // Pushing element on the top of the stack 
+    static void stack_push(Stack<Integer> stack) 
+    { 
+        for(int i = 0; i < 5; i++) 
+        { 
+            stack.push(i); 
+        } 
+    } 
+      
+    // Popping element from the top of the stack 
+    static void stack_pop(Stack<Integer> stack) 
+    { 
+        System.out.println("Pop :"); 
+  
+        for(int i = 0; i < 5; i++) 
+        { 
+            Integer y = (Integer) stack.pop(); 
+            System.out.println(y); 
+        } 
+    } 
+  
+    // Displaying element on the top of the stack 
+    static void stack_peek(Stack<Integer> stack) 
+    { 
+        Integer element = (Integer) stack.peek(); 
+        System.out.println("Element on stack top : " + element); 
+    } 
+      
+    // Searching element in the stack 
+    static void stack_search(Stack<Integer> stack, int element) 
+    { 
+        Integer pos = (Integer) stack.search(element); 
+  
+        if(pos == -1) 
+            System.out.println("Element not found"); 
+        else
+            System.out.println("Element is found at position " + pos); 
+    } 
+  
+  
+    public static void main (String[] args) 
+    { 
+        Stack<Integer> stack = new Stack<Integer>(); 
+  
+        stack_push(stack); 
+        stack_pop(stack); 
+        stack_push(stack); 
+        stack_peek(stack); 
+        stack_search(stack, 2); 
+        stack_search(stack, 6); 
+    } 
+} 
+
+Assume we have db.properties, how u will get 
+
+ResourceBundle rb=new ResourceBundle("db.properties");
+
+{wrong}
+
+ResourceBundle rb=ResourceBundle.getBundle("db");
+
+
+
+Locale geek1 = new Locale("English", "IN"); 
+  
+        // Use of getDefault() : 
+        Locale geek2 = Locale.getDefault(); 
+  
+        System.out.println("Locale name : " + geek1); 
+        System.out.println("Locale name Default : " + geek2); 
+  
+        // Use of getDisplayCountry() : 
+        System.out.println("\nCountry Name : "
+                            + geek1.getDisplayCountry()); 
+  
+        // Use of getCountry() : 
+        System.out.println("Country Name ISO 3166 2-letter code : "
+                                            + geek1.getCountry()); 
+  
+        // Use of equal() : 
+        System.out.println("\nIs geek1 equals geek2 : "
+                                 + geek1.equals(geek2)); 
+  
+        // clone() : geek3 is a clone of geek2 
+        Locale geek3 = (Locale) geek2.clone(); 
+  
+        // Locale : geek3 
+        System.out.println("Locale geek3 same as geek2 : "
+                                                + geek3); 
+
+
+
+ Locale locale = new Locale("fr");   
+        System.out.println("locale: "+locale);
+         
+        // Create a locale object using two parameters constructor
+        Locale locale2 = new Locale("fr", "CANADA");
+        System.out.println("locale2: "+locale2);
+         
+        // Create a locale object using three parameters constructor
+        Locale locale3 = new Locale("no", "NORWAY", "NY");
+        System.out.println("locale3: "+locale3);
+
+
+ Calendar calndr = Calendar.getInstance(); 
+  
+        // Display the date and time 
+        System.out.print("The system"
+                         + " date and time is: " + calndr.getTime()); 
+
+
+
+class NameComparator implements Comparator {
+    
+    public int compareTo(Employ e1,Employ e2) {
+      return e1.name.compareTo(e2.name)
+   }
+}
+
+The above code, we write in jdk 1.8 as 
+
+Comparator<Employee> employeeNameComparator
+      = Comparator.comparing(
+        Employee::name, (e1, e2) -> {
+            return s2.compareTo(s1);
+        });
+
+
+
+
+Annotations for Junit testing
+The Junit 4.x framework is annotation based, so let's see the annotations that can be used while writing the test cases.
+
+@Test annotation specifies that method is the test method.
+
+@Test(timeout=1000) annotation specifies that method will be failed if it takes longer than 1000 milliseconds (1 second).
+
+@BeforeClass annotation specifies that method will be invoked only once, before starting all the tests.
+
+@Before annotation specifies that method will be invoked before each test.
+
+@After annotation specifies that method will be invoked after each test.
+
+@AfterClass annotation specifies that method will be invoked only once, after finishing all the tests.
+
+
+JUnit Tutorial | Testing Framework for Java
+JUnit tutorial provides basic and advanced concepts of unit testing in java with examples. Our junit tutorial is designed for beginners and professionals.
+
+It is an open-source testing framework for java programmers. The java programmer can create test cases and test his/her own code.
+
+It is one of the unit testing framework. Current version is junit 4.
+
+To perform unit testing, we need to create test cases. The unit test case is a code which ensures that the program logic works as expected.
+
+The org.junit package contains many interfaces and classes for junit testing such as Assert, Test, Before, After etc.
+
+Types of unit testing
+There are two ways to perform unit testing: 1) manual testing 2) automated testing.
+
+1) Manual Testing
+If you execute the test cases manually without any tool support, it is known as manual testing. It is time consuming and less reliable.
+
+2) Automated Testing
+If you execute the test cases by tool support, it is known as automated testing. It is fast and more reliable.
+
+Annotations for Junit testing
+The Junit 4.x framework is annotation based, so let's see the annotations that can be used while writing the test cases.
+
+@Test annotation specifies that method is the test method.
+
+@Ignore annotation for ignore test case
+
+@Test(timeout=1000) annotation specifies that method will be failed if it takes longer than 1000 milliseconds (1 second).
+
+@BeforeClass annotation specifies that method will be invoked only once, before starting all the tests.
+
+@Before annotation specifies that method will be invoked before each test.
+
+@After annotation specifies that method will be invoked after each test.
+
+@AfterClass annotation specifies that method will be invoked only once, after finishing all the tests.
+
+Assert class
+The org.junit.Assert class provides methods to assert the program logic.
+
+Methods of Assert class
+The common methods of Assert class are as follows:
+
+void assertEquals(boolean expected,boolean actual): checks that two primitives/objects are equal. It is overloaded.
+void assertTrue(boolean condition): checks that a condition is true.
+void assertFalse(boolean condition): checks that a condition is false.
+void assertNull(Object obj): checks that object is null.
+void assertNotNull(Object obj): checks that object is not null.
+
+__________________________________________________
+
+package com.hcl.employ;
+
+import java.util.Stack;
+
+public class Dummy {
+
+	public static void main(String[] args) {
+		// Creating a Stack
+        Stack<String> stackOfCards = new Stack<>();
+
+        // Pushing new items to the Stack
+        stackOfCards.push("Jack");
+        stackOfCards.push("Queen");
+        stackOfCards.push("King");
+        stackOfCards.push("Ace");
+
+        System.out.println("Stack => " + stackOfCards);
+        System.out.println();
+
+        // Popping items from the Stack
+        String cardAtTop = stackOfCards.pop();  // Throws EmptyStackException if the stack is empty
+        System.out.println("Stack.pop() => " + cardAtTop);
+        System.out.println("Current Stack => " + stackOfCards);
+        System.out.println();
+
+        // Get the item at the top of the stack without removing it
+        cardAtTop = stackOfCards.peek();
+        System.out.println("Stack.peek() => " + cardAtTop);
+        System.out.println("Current Stack => " + stackOfCards);
+	}
+}
+
+
+Stack => [Jack, Queen, King, Ace]
+
+Stack.pop() => Ace
+Current Stack => [Jack, Queen, King]
+
+Stack.peek() => King
+Current Stack => [Jack, Queen, King]
+
+________________________________________________________
+
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class IterateOverQueueExample {
+    public static void main(String[] args) {
+        Queue<String> waitingQueue = new LinkedList<>();
+
+        waitingQueue.add("John");
+        waitingQueue.add("Brad");
+        waitingQueue.add("Angelina");
+        waitingQueue.add("Julia");
+
+        System.out.println("=== Iterating over a Queue using Java 8 forEach() ===");
+        waitingQueue.forEach(name -> {
+            System.out.println(name);
+        });
+
+        System.out.println("\n=== Iterating over a Queue using iterator() ===");
+        Iterator<String> waitingQueueIterator = waitingQueue.iterator();
+        while (waitingQueueIterator.hasNext()) {
+            String name = waitingQueueIterator.next();
+            System.out.println(name);
+        }
+
+        System.out.println("\n=== Iterating over a Queue using iterator() and Java 8 forEachRemaining() ===");
+        waitingQueueIterator = waitingQueue.iterator();
+        waitingQueueIterator.forEachRemaining(name -> {
+            System.out.println(name);
+        });
+
+        System.out.println("\n=== Iterating over a Queue using simple for-each loop ===");
+        for(String name: waitingQueue) {
+            System.out.println(name);
+        }
+    }
+}
+____________________________________________________________________
+
+# Output
+=== Iterating over a Queue using Java 8 forEach() ===
+John
+Brad
+Angelina
+Julia
+
+=== Iterating over a Queue using iterator() ===
+John
+Brad
+Angelina
+Julia
+
+=== Iterating over a Queue using iterator() and Java 8 forEachRemaining() ===
+John
+Brad
+Angelina
+Julia
+
+=== Iterating over a Queue using simple for-each loop ===
+John
+Brad
+Angelina
+Julia
+___________________________________________________________________
+When we create JUnit test cases, we would normally setup our own configuration and data objects that can be used on our test cases. We needed them to be readily available when we create each of the method test cases and mock what was actually being used by the system at runtime.
+
+We can prepare this within the test method but what a good alternative is override the setup and tearDown method. These methods will be called for each test case method calls. This will allow the test case to do a prepration and post clean up process for each of the JUnit method test call.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
