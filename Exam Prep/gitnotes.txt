@@ -8,7 +8,7 @@ To pull the changes from one branch to another branch
 
 Assume you are in java branch and you want to get changes from hcl branch, then 
 
-git pull hcl 
+git pull origin hcl 
 
 To switch to existing branch 
 
