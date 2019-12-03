@@ -1,0 +1,57 @@
+use sqlpractice;
+-- change this to your team id
+use sqlpractice;
+
+-- comment this line for the very first time
+drop table if exists EMPLOYEE;
+drop table if exists LEAVE_HISTORY;
+
+
+
+-- create the table EMPLOYEE
+create table EMPLOYEE (EMP_ID int primary key,
+ EMP_NAME CHAR(50) NOT NULL,
+ EMP_PHONE BIGINT(11) unique NOT NULL,
+ EMP_EMAIL VARCHAR(25) unique NOT NULL,
+ EMP_DEPT VARCHAR(30) NOT NULL,
+ EMP_JOINING_DATE DATE NOT NULL,
+ EMP_MGR_ID INT(7) references EMPLOYEE(EMP_ID),
+ EMP_LEAVE_BAL INT(2));
+ 
+
+CREATE TABLE LEAVE_HISTORY(
+LEAVE_ID INT(4) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+LEAVE_NO_OF_DAYS INT(2),
+LEAVE_START_DATE DATE NOT NULL,
+LEAVE_END_DATE DATE NOT NULL,
+LEAVE_TYPE ENUM('EL') NOT NULL,
+LEAVE_STATUS ENUM('Approved','Denied','Pending') NOT NULL,
+EMP_ID INT(7) NOT NULL references EMPLOYEE(EMP_ID),
+LEAVE_REASON VARCHAR(30),
+LEAVE_APPLIED_ON DATE NOT NULL,
+LEAVE_MGR_COMMENTS VARCHAR(30));
+
+-- change this to your team id
+
+
+
+
+
+-- The CEO
+INSERT INTO EMPLOYEE VALUES(5000,'Krishna Kumar','9876543210','krishnakumar@hexaware.com','Hexaware','2013-07-07',null,15);
+
+
+
+-- Two Managers
+INSERT INTO EMPLOYEE VALUES(2000,'GARIMA JOSHI',9039711012,'GarimaJ@hexaware.com','CTO_Office','2004-02-08',5000,12);
+INSERT INTO EMPLOYEE VALUES(2001,'RISHI SHRIVASTAVA',8962162496,'RishiS2@hexaware.com','Hexavarsity','2006-02-08',5000,0);
+
+
+
+-- Two Employees
+
+INSERT INTO EMPLOYEE VALUES(3000,'HIMANSHU LOKHANDE',7828245143,'HimanshuL2@hexaware.com','CTO_Office','2017-11-14',2000,12);
+INSERT INTO EMPLOYEE VALUES(3001,'SHREYASHREE MISHRA',7683831702,'ShreyashreeM@hexaware.com','Hexavarsity','2017-11-14',2001,10);
+INSERT INTO EMPLOYEE VALUES(1000,'ADITI PADHI',7008913408,'AditiP@hexaware.com','Hexavarsity','1998-02-08',2001,12);
+
+
