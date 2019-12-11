@@ -1,0 +1,125 @@
+JDBC (Java DataBase Connectivity)  Java applications cannot directly communicate with a database to submit data and retrieve the results of queries. You need a mechanism to translate java statements into SQL statements. The JDBC architecture provides the mechanism for this kind of transaction. 
+
+JDBC Architecture is classified into 2 types. 
+
+JDBC Application Layer : Signifies a java application that uses the JDBC API to interact with the JDBC drivers. A JDBC driver is a software that a java application uses to access a database. 
+
+JDBC Driver Layer : Acts as an interface between a java applicatinos and a database. This layer contains a driver, such as a SQL Server driver or Oracle driver, which enables you to connect to the database. A driver sends the request of a java application to the database. After processing the request, the database sends the response back to the driver. The Driver translates and sends the response to the JDBC API. 
+
+Types of JDBC Drivers : 
+
+1) JDBC-ODBC Bridge Driver {Type 1}
+
+2) Native-API Partly-Java driver {Type 2}
+
+3) JDBC-Net Pure-Java driver {Type 3}
+
+4) Native Protocol Pure-java Driver. {Type 4}
+
+1. JDBC-ODBC Bridge Driver : It is called type 1 driver, that converts the JDBC calls to Open Database Connectivity (ODBC). ODBC is an open standard API to communicate with the databases.  The JDBC-ODBC bridge driver enables a java app. to use any database that supports ODBC driver. Java application will not interact with the ODBC driver, for this purpose, we need to use JDBC-ODBC bridge driver that works as an interface between the app and the ODBC driver. 
+
+2. Native-API Partly-Java Driver : It is called type 2 driver. It uses the local native libraries provided by the database vendors to access databases. The JDBC driver maps the JDBC calls to the native method calls, which are passed to the local native Call Level Interface(CLI). To use this driver the CLI needs to be loaded on the client computer. As opposed to the JDBC-ODBC bridge driver, the Native-API partly-java driver does not have an ODBC intermediate layer. 
+
+3. JDBC-Net Pure-Java Driver : This is called Type 3 driver. You can use the JDBC-Net Pure-Java Driver over the web while connecting applets with databases. This driver consists of client and server portions. Client Portion contains the pure java functions and the server side portion contains java and native methods. The java app. sends the JDBC calls to the JDBC-Net Pure java driver client portion, which in turn, translates JDBC calls into database calls. 
+
+4. Native Protocol Pure-java driver : This is called type 4 driver, it is a java driver that interacts with the database directly using a vendor-specific network protocol, As opposed to the other JDBC drivers, you do not require to install any vendor-specific libraries to use the Type 4 driver. 
+
+
+_______________________________________________________________________________
+
+You need to load the database drivers and the JDBC API while developing a java application to retrieve or store data in a database. All JDBC classes and interfaces are available in java.sql package. The classes and interfaces performs the no.of tasks such as establish and close the connectino with a database, send a request to the database etcc..
+
+DriverManager class : Loads the Driver for a database. 
+
+
+To query a database and display the result using java application, you need to : 
+
+1) Load a Driver
+
+2) Connect to database
+
+3) Create and execute JDBC statements
+
+4) handle SQL Exceptions. 
+
+Loading Driver : 
+
+You can load the driver by using forName() method. 
+
+
+Class.forName("sun.jdbc.odbc.JdbcOdbcDriver"); // Type 1 driver
+
+Class.forName("net.sourceforge.jtds.jdbc.Driver"); // Type 4 driver
+
+Class.forName("oracle.jdbc.driver.OracleDriver");
+			
+			Connection con=DriverManager.getConnection(
+					"jdbc:oracle:thin:@localhost:1521:xe","scott","tiger");
+
+Connection to Database : 
+
+By using the Connection interface you can connect to the database. 
+
+Connection con=DriverManager.getConnection("jdbc:odbc:datasource");
+
+Connection connection=DriverManager.getConnection("jdbc:jtds:sqlserver://Prasanna-PC/SqlPractice","sa","Prasanna@123");
+
+Connection con=DriverManager.getConnection(
+	"jdbc:oracle:thin:@localhost:1521:xe","scott","tiger");
+
+The JDBC URL contains the following components : 
+
+1) Protocol Name : Indicates the name of the protocol that is used to access a database.
+2) Sub-protocol Name : Indicates the mechanism to retrieve data from a database. 
+3) Subname : Indicates the Data Source Name (DSN) that contains the database information.
+
+You need to specify the user name and password of the connecting databaes. 
+
+Connection con=DriverManager.getConnection("jdbc:odbc:java","sa","");
+
+3) Create and Execute JDBC Statements : 
+
+
+Statement : This is used to create one valid sql statement. 
+
+Statement st=con.createStatement();
+
+You can fire the select query by using the executeQuery() method and other insert,update and delete dml operations are performed by using executeUpdate() method. 
+
+To store the records retrived by the statement object, we need the help of ResultSet. 
+
+Statement st=con.CreateStatement();
+ResultSet rs=st.executeQuery("select * from emp");
+
+Types of ResultSets : 
+
+There are 4 types of ResultSets are available to us. 
+
+1. Read Only : Allows you to only read the rows in the ResultSet object. 
+
+2. Forward only : Allows you to move the result set cursor from first row to last row in forward direction only. 
+
+3. Scrollable : Allows you to move the result set cursor forward or backward through the result set. 
+
+4. Updatable : Allows you to update the result set rows retrieved from the database table.
+
+ResultFields : 
+
+TYPE_SCROLL_SENSITIVE -> Specifies that the cursor of the ResultSet object is scrollable and it refect the changes in the data made by other users. 
+
+TYPE_SCROLL_INSENSITIVE -> Specifies that the cursor of the ResultSet object is scrollable and it does not reflect changes in the data made by other users. 
+
+TYPE_FORWARD_ONLY : Specifies that the cursor of the ResultSet object moves in the forward direction only from the first row to the last row. 
+
+
+
+Methods in the ResultSet Interface : 
+
+first() -> Shifts the control of the result set cursor to the first row of the result set.
+
+last() -> Shifts the control of the resultset cursor to the last row of the result set. 
+
+next() -> Move the control to the next row. 
+
+previous() -> Shifts the control of the result set cursor to the previous row. 
+
